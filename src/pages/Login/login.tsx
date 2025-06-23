@@ -16,9 +16,9 @@ const Login = () => {
 
         try {
             const response = await loginUser(data.email, data.password)
-         
+
             const token = response.accessToken
-    
+
             if (!token) {
                 toast.error('Token inválido na resposta.')
                 return
@@ -38,7 +38,7 @@ const Login = () => {
 
         } catch (error: any) {
             toast.error(
-                error?.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.'
+                error.message || 'Erro ao fazer login. Verifique suas credenciais.'
             )
         } finally {
             setLoading(false)
